@@ -4,7 +4,7 @@
       <a-space>
         <img alt="logo" src="@/assets/logo.png" width="35" />
         <a-typography-title :style="{ margin: 0, fontSize: '18px' }" :heading="5">
-          净链反洗钱
+          净链反洗钱系统
         </a-typography-title>
         <icon-menu-fold v-if="!topMenu && appStore.device === 'mobile'" style="font-size: 22px; cursor: pointer"
           @click="toggleDrawerMenu" />
@@ -14,6 +14,9 @@
       <Menu v-if="topMenu" />
     </div>
     <ul class="right-side">
+      <li>
+        <DocumateAiButton endpoint="http://localhost:3000/api/chat" />
+      </li>
       <li>
         <a-tooltip :content="$t('settings.search')">
           <a-button class="nav-btn" type="outline" :shape="'circle'">
@@ -151,6 +154,7 @@ import useLocale from '@/hooks/locale';
 import useUser from '@/hooks/user';
 import Menu from '@/components/menu/index.vue';
 import MessageBox from '../message-box/index.vue';
+import DocumateAiButton from '@/views/assistant/DocumateAiButton.vue';
 
 const appStore = useAppStore();
 const userStore = useUserStore();

@@ -13,16 +13,23 @@
       </a-row>
 
       <a-row class="grid-item" justify="space-between" :gutter="24">
-        <a-col :span="8">
-          <div>
-            <div id="chart" style="width: 100%; height: 300px"></div>
+        <a-col :span="6">
+          <a-space direction="vertical" fill>
+            <div>
+              <Overview />
+            </div>
+            <div>
+              <TransactionLine />
+            </div>
+          </a-space>
+        </a-col>
+        <a-col :span="14">
+          <div class="right-container">
+            <RegionMap />
           </div>
         </a-col>
-        <a-col :span="8">
-          <div>22222222</div>
-        </a-col>
-        <a-col :span="8">
-          <div>333333</div>
+        <a-col :span="4">
+          3333
         </a-col>
       </a-row>
     </div>
@@ -31,8 +38,10 @@
 
 <script lang="ts" setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
-import VChart from '@visactor/vchart';
 import dayjs from 'dayjs';
+import Overview from '@/views/dashboard/monitor/info/Overview.vue';
+import TransactionLine from '@/views/dashboard/monitor/info/TransactionLine.vue';
+import RegionMap from '@/views/dashboard/monitor/info/RegionMap.vue';
 
 // 将 timer 的类型修正为 number | null
 const timer = ref<number | null | any>(null);
@@ -51,46 +60,6 @@ onMounted(() => {
   timer.value = setInterval(() => {
     // dateTime.value = dayjs().format('YYYY-MM-DD HH:mm:ss');
   }, 1000);
-
-  const spec = {
-    data: [
-      {
-        id: 'barData',
-        values: [
-          { month: 'Monday', sales: 22 },
-          { month: 'Tuesday', sales: 13 },
-          { month: 'Wednesday', sales: 25 },
-          { month: 'Thursday', sales: 29 },
-          { month: 'Friday', sales: 38 }
-        ]
-      }
-    ],
-    type: 'bar',
-    xField: 'month',
-    yField: 'sales',
-    background: {
-      gradient: 'linear',  // 渐变类型为线性
-      x0: 0,               // 渐变起始点的 X 坐标
-      y0: 0,               // 渐变起始点的 Y 坐标
-      x1: 0,               // 渐变结束点的 X 坐标
-      y1: 1,               // 渐变结束点的 Y 坐标（1 表示从上到下）
-      stops: [
-        {
-          offset: 0,       // 0% 处的颜色
-          color: 'rgba(255, 0, 0, 0)'  // 0% 处的颜色为完全透明的红色
-        },
-        {
-          offset: 1,       // 100% 处的颜色
-          color: 'rgba(0, 0, 255, 0)'  // 100% 处的颜色为完全透明的蓝色
-        }
-      ]
-    }
-  };
-
-  // 创建 vchart 实例
-  const vchart = new VChart(spec, { dom: 'chart' });
-  // 绘制
-  vchart.renderSync();
 });
 </script>
 
@@ -133,6 +102,10 @@ export default {
   text-align: center;
   font-size: 20px;
   font-weight: 600;
+}
+
+.right-container {
+  padding-right: 20px;
 }
 
 .layout {

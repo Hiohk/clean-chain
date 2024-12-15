@@ -12,7 +12,8 @@
     "preview": "npm run build && vite preview --host",
     "type:check": "vue-tsc --noEmit --skipLibCheck",
     "lint-staged": "npx lint-staged",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "documate:upload": "documate upload"
   },
   "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
@@ -31,6 +32,8 @@
   },
   "dependencies": {
     "@arco-design/web-vue": "^2.44.7",
+    "@documate/vue": "^0.3.1",
+    "@headlessui/vue": "^1.7.23",
     "@visactor/vchart": "^1.13.0",
     "@vueuse/core": "^9.3.0",
     "arco-design-pro-vue": "^2.7.3",
@@ -38,6 +41,8 @@
     "dayjs": "^1.11.13",
     "echarts": "^5.4.0",
     "lodash": "^4.17.21",
+    "markdown-it-highlightjs": "^4.2.0",
+    "markdown-it-mathjax3": "^4.3.2",
     "mitt": "^3.0.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.23",
@@ -54,6 +59,7 @@
     "@arco-plugins/vite-vue": "^1.4.5",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
+    "@documate/documate": "^0.2.1",
     "@types/lodash": "^4.14.186",
     "@types/mockjs": "^1.0.7",
     "@types/nprogress": "^0.2.0",
